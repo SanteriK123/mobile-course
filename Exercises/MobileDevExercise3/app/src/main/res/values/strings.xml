@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MobileDevExercise3</string>
+    <string-array name="items">
+        <item>peach</item>
+        <item>tomato</item>
+        <item>potato</item>
+    </string-array>
+    <string-array name="prices">
+        <item>3€</item>
+        <item>4€</item>
+        <item>2€</item>
+    </string-array>
+    <string-array name="descriptions">
+        <item>Fresh peaches from Georgia</item>
+        <item>Fresh salad tomatoes from Ohio</item>
+        <item>Great potatoes from Finland</item>
+    </string-array>
+</resources>
