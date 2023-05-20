@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string-array name="Races">
+        <item>elf</item>
+        <item>hobgoblin</item>
+        <item>human</item>
+        <item>orc</item>
+    </string-array>
+    <string-array name="Classes">
+        <item>barbarian</item>
+        <item>cleric</item>
+        <item>rogue</item>
+        <item>wizard</item>
+    </string-array>
+</resources>
