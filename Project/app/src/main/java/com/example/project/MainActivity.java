@@ -1,11 +1,13 @@
 package com.example.project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Character character = generateAttributes();
         generateName(character);
         characters.addCharacterToStorage(character);
+        notifyCharacterGenerated();
     }
     public Character generateAttributes() {
         /*Replicates the method in DnD where we roll 4 dice, remove the lowest roll, add together*/
@@ -50,13 +53,12 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(stat);
             stats.add(stat);
         }
-        /*Now let's select a random class and race*/
+        /*Select a random class and race*/
         String charClass = classes[random.nextInt(classes.length)];
         String charRace = races[random.nextInt(races.length)];
         int classImg = this.getResources().getIdentifier(charClass, "drawable", this.getPackageName());
         int raceImg = this.getResources().getIdentifier(charRace, "drawable", this.getPackageName());
-        Character character = new Character("",stats.get(0),stats.get(1),stats.get(2),stats.get(3),stats.get(4),stats.get(5),charClass,charRace,classImg,raceImg);
-        return character;
+        return new Character("",stats.get(0),stats.get(1),stats.get(2),stats.get(3),stats.get(4),stats.get(5),charClass,charRace,classImg,raceImg);
     }
     public void generateName(Character character) {
         StringBuilder name = new StringBuilder();
@@ -68,18 +70,23 @@ public class MainActivity extends AppCompatActivity {
         int nameLength = random.nextInt(6)+3;
         int vowelWeight = 0;
         int consonantWeight = 0;
-        if (character.charRace.equals("human")) {
-            vowels = new String[]{"a","e","i","o","u"};
-            consonants = new String[]{"c","d","f","g","h","j","k","l","m","n","p","r","s","t","v"};
-        } else if (character.charRace.equals("elf")) {
-            vowels = new String[]{"a","e","o","u","y"};
-            consonants = new String[]{"c","d","f","g","h","k","l","m","n","p","q","r","s","t","v","w"};
-        } else if (character.charRace.equals("orc")) {
-            vowels = new String[]{"a","i","o","u","ä","ö"};
-            consonants = new String[]{"c","d","f","g","h","j","k","m","n","p","r","s","t","x","z"};
-        } else {
-            vowels = new String[]{"o","u","ä","ö","y"};
-            consonants = new String[]{"b","c","d","f","g","p","r","s","t","x","z"};
+        switch (character.charRace) {
+            case "human":
+                vowels = new String[]{"a", "e", "i", "o", "u"};
+                consonants = new String[]{"c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v"};
+                break;
+            case "elf":
+                vowels = new String[]{"a", "e", "o", "u", "y"};
+                consonants = new String[]{"c", "d", "f", "g", "h", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w"};
+                break;
+            case "orc":
+                vowels = new String[]{"a", "i", "o", "u", "ö"};
+                consonants = new String[]{"c", "d", "f", "g", "h", "j", "k", "m", "n", "p", "r", "s", "t", "x", "z"};
+                break;
+            default:
+                vowels = new String[]{"o", "u", "ä", "ö", "y"};
+                consonants = new String[]{"b", "c", "d", "f", "g", "p", "r", "s", "t", "x", "z"};
+                break;
         }
         /*Randomly pick a vowel or consonant and add it to the end of the array*/
         /*no more than 2 consonants or vowels allowed in a row*/
@@ -110,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             generateName.set(0, vowels[random.nextInt(vowels.length)]);
         }
         generateName.set(0,generateName.get(0).toUpperCase());
-        /*Use the values in the array to generate the string*/
+        /*Use the values in the array to generate the final string*/
         for (int i = 0;i< generateName.size();i++) {
             name.append(generateName.get(i));
         }
@@ -123,5 +130,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    private void notifyCharacterGenerated() {
+        MediaPlayer sound;
+        sound = MediaPlayer.create(this, R.raw.sound);
+        sound.setOnCompletionListener(mp -> {
+            mp.reset();
+            mp.release();
+        });
+        sound.start();
+        TextView notification = findViewById(R.id.txtNotifyCharacterGenerated);
+        notification.append("Character has been generated!");
+        new CountDownTimer(1500, 1000){
+            public void onTick(long millisUntilFinished){
+            }
+            public  void onFinish(){
+                notification.setText("");
+            }
+        }.start();
     }
 }

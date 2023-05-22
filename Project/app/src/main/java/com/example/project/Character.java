@@ -1,7 +1,5 @@
 package com.example.project;
 
-import android.media.Image;
-
 public class Character {
     protected String name;
     protected int strength;
@@ -31,45 +29,5 @@ public class Character {
 
     public String getName() {
         return name;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getDexterity() {
-        return dexterity;
-    }
-
-    public int getConstitution() {
-        return constitution;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public int getWisdom() {
-        return wisdom;
-    }
-
-    public int getCharisma() {
-        return charisma;
-    }
-
-    public String getCharClass() {
-        return charClass;
-    }
-
-    public String getCharRace() {
-        return charRace;
-    }
-
-    public int getRaceImage() {
-        return raceImage;
-    }
-
-    public int getClassImage() {
-        return classImage;
     }
 }

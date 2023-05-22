@@ -1,6 +1,7 @@
 package com.example.project;
 
 import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
     public TextView intelligence;
     public TextView wisdom;
     public TextView charisma;
-    public ImageView imgClass, imgRace;
+    public ImageView imgClass, imgRace, imgBorder1, imgBorder2;
     public CharacterViewHolder(@NonNull View itemView) {
         super(itemView);
         name = itemView.findViewById(R.id.txtName);
@@ -32,5 +33,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
         charisma = itemView.findViewById(R.id.txtCharisma);
         imgClass = itemView.findViewById(R.id.imgClass);
         imgRace = itemView.findViewById(R.id.imgRace);
+        imgBorder1 = itemView.findViewById(R.id.imgBorder);
+        imgBorder2 = itemView.findViewById(R.id.imgBorder2);
     }
 }

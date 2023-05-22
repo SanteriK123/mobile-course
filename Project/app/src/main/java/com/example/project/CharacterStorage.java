@@ -3,7 +3,7 @@ package com.example.project;
 import java.util.ArrayList;
 
 public class CharacterStorage {
-    ArrayList<Character> characters = new ArrayList<Character>();
+    ArrayList<Character> characters = new ArrayList<>();
     private static CharacterStorage characterStorage = null;
     private CharacterStorage(){}
 

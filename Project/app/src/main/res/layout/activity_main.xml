@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pattern"
     tools:context=".MainActivity">
 
     <Button
@@ -11,8 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
+        android:backgroundTint="#6E4521"
+        android:fontFamily="@font/berkshire_swash"
         android:onClick="generateCharacter"
+        android:shadowColor="@color/black"
+        android:shadowDx="-10"
+        android:shadowDy="-10"
+        android:shadowRadius="1"
         android:text="Generate a Character"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +30,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:backgroundTint="#6E4521"
+        android:fontFamily="@font/berkshire_swash"
         android:onClick="switchToListCharactersActivity"
+        android:shadowColor="@color/black"
+        android:shadowDx="-10"
+        android:shadowDy="-10"
+        android:shadowRadius="1"
         android:text="List Characters"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGenerate" />
+
+    <TextView
+        android:id="@+id/txtNotifyCharacterGenerated"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/berkshire_swash"
+        android:textColor="#FFEB3B"
+        android:textSize="24sp"
+        android:shadowColor="@color/black"
+        android:shadowDx="-10"
+        android:shadowDy="-10"
+        android:shadowRadius="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnListCharacters" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
