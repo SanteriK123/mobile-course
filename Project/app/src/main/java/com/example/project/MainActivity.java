@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         characters.addCharacterToStorage(character);
         notifyCharacterGenerated();
     }
-    public Character generateAttributes() {
+    private Character generateAttributes() {
         /*Replicates the method in DnD where we roll 4 dice, remove the lowest roll, add together*/
         /*We will repeat this for every stat of the character*/
         ArrayList<Integer> stats = new ArrayList<>();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         int raceImg = this.getResources().getIdentifier(charRace, "drawable", this.getPackageName());
         return new Character("",stats.get(0),stats.get(1),stats.get(2),stats.get(3),stats.get(4),stats.get(5),charClass,charRace,classImg,raceImg);
     }
-    public void generateName(Character character) {
+    private void generateName(Character character) {
         StringBuilder name = new StringBuilder();
         ArrayList<String> generateName = new ArrayList<>();
         String[] vowels;
