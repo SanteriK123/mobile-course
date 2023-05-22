@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">DnDCharacterGenerator</string>
     <string-array name="Races">
         <item>elf</item>
         <item>hobgoblin</item>
